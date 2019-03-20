@@ -1,4 +1,4 @@
-package com.bindhu.snap.Presentation;
+package com.bindhu.snap.Presentation.infrastructure;
 
 import android.content.Context;
 import android.location.Location;
@@ -25,38 +25,39 @@ public class NetworkUtils {
     private static final String LOG_TAG = NetworkUtils.class.getSimpleName();
 
     // Base URL for snaps API.
-    private static final String SNAP_BASE_URL = "http://ec2-54-174-75-230.compute-1.amazonaws.com/9000?";
+    private static final String SNAP_BASE_URL = "http://ec2-54-174-75-230.compute-1.amazonaws.com/9000/snaps";
     // Parameter for coordinate longitude.
     private static final String LONGITUDE = "42.33335254";
     // Parameter for coordinate latitude.
     private static final String LATITUDE = "2.33333";
     // Parameter for distance.
     private static final String DISTANCE = "30";
-    private final ConnectivityManager mConnectivityManager;
+
 
     private Context mContext;
-    private NetworkInfo networkInfo;
 
-    public NetworkUtils(Context context) {
-        this.mContext = context;
-        mConnectivityManager = (ConnectivityManager)
-                mContext.getSystemService(Context.CONNECTIVITY_SERVICE);
-    }
 
-    public void getNetworkStatus(final OnNetworkListener onNetworkListerner) {
+   // private NetworkInfo networkInfo;
+   // public NetworkUtils(Context context) {
+      //  this.mContext = context;
+       // mConnectivityManager = (ConnectivityManager)
+          //      mContext.getSystemService(Context.CONNECTIVITY_SERVICE);
+   // }
+
+   // public void getNetworkStatus(final OnNetworkListener onNetworkListerner) {
         //Get the connectivity manager, if its not null, get the network info(status)
 
-        if (mConnectivityManager != null) {
-            networkInfo = mConnectivityManager.getActiveNetworkInfo();
-            if (networkInfo != null && networkInfo.isConnected()) {
-                if (onNetworkListerner != null)
-                    onNetworkListerner.networkStatus(true);
-            }
-        }
+       // if (mConnectivityManager != null) {
+       //     networkInfo = mConnectivityManager.getActiveNetworkInfo();
+        //    if (networkInfo != null && networkInfo.isConnected()) {
+           //     if (onNetworkListerner != null)
+                //    onNetworkListerner.networkStatus(true);
+           // }
+      //  }
 
-    }
+  //  }
 
-    public static List<Snap> getSnaps() {
+    public static List<Snap> getSnaps(double mScope, Location mCurrentLocation) {
 
         List<Snap> snaps = new ArrayList<>();
         HttpURLConnection urlConnection = null;

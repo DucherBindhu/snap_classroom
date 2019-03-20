@@ -1,13 +1,15 @@
 package com.bindhu.snap.Presentation.activity;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
+
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 
 import com.bindhu.snap.R;
 import com.bumptech.glide.Glide;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
 
